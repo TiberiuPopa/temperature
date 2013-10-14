@@ -70,21 +70,21 @@ public class TemperatureTest {
 	public void testGetValueCelsiusSubZero() {
 		Temperature tester = new Temperature(-300.0, Temperature.Units.CELSIUS);
 		assertEquals("*getValue() returns wrong value for sub-0 Celsius!*", -273.15, tester.getValue(), 0.000001);
-															// Absolute Zero in C is -273.15
+										// Absolute Zero in C is -273.15
 	}
 	
 	@Test
 	public void testGetValueFahrenheitSubZero() {
 		Temperature tester = new Temperature(-600.0, Temperature.Units.FAHRENHEIT);
 		assertEquals("*getValue() returns wrong value for sub-0 Fahrenheit!*", -459.67, tester.getValue(), 0.000001);
-															// Absolute Zero in F is -459.67
+										// Absolute Zero in F is -459.67
 	}
 	
 	@Test
 	public void testGetValueKelvinSubZero() {
 		Temperature tester = new Temperature(-10.0, Temperature.Units.KELVIN);
 		assertEquals("*getValue() returns wrong value for sub-0 Kelvin!*", 0.0, tester.getValue(), 0.000001);
-															// Absolute Zero in K is 0.0
+										// Absolute Zero in K is 0.0
 	}
 	
 	
