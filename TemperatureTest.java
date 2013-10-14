@@ -8,7 +8,7 @@ import org.junit.* ;
 import static org.junit.Assert.* ;
 
 public class TemperatureTest {
-	
+
 	@Test
 	public void testGetUnitsCelsius() {
 		Temperature tester = new Temperature(10.0, Temperature.Units.CELSIUS);	// The 10.0 is irrelevant; we test units
@@ -27,4 +27,11 @@ public class TemperatureTest {
 		assertTrue("*getUnits() fails for Kelvin!*", Temperature.Units.KELVIN == tester.getUnits() );
 	}
 	
+	@Test
+	public void testGetValueCelsius() {
+		Temperature tester = new Temperature(10.0, Temperature.Units.CELSIUS);
+		assertEquals("*getValue() returns wrong value!*", 10.0, tester.getValue(), 0.000001);
+		// Using tolerance=0.000001 because prof. mentioned 1e6 precision on discussion board
+	}
+
 }
