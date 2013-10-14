@@ -1,6 +1,7 @@
 /** 
  * @author Aditya Mahajan <aditya.mahajan@mcgill.ca>
- * @version 2013.10.06
+ * Modified by Tiberiu Popa <tiberiu.popa@mail.mcgill.ca>
+ * @version 2013.10.13
  * Program for ECSE 321, Assignment 2, Fall 2013
  */
 
@@ -73,18 +74,27 @@ public class Temperature {
    * @param value numerical value of Temperature
    */
   protected double convertFromKelvin(double value) {
-      double convertedValue;
-
-      switch (units) {
-          case KELVIN:     convertedValue = value;
-                           break;
-          case CELSIUS:    convertedValue = value - 273.15;
-                           break;
-          case FAHRENHEIT: convertedValue = value * 9.0/5.0 - 459.67;
-                           break;
-          default:         throw new IllegalArgumentException();
-      }
-
+      
+	  double convertedValue;
+	  
+	  // Checking if the temperature is below the absolute zero.
+	  // Returning the absolute zero in that case, in the units requested.
+	  if (value<0.0) {
+		  //System.out.println("The inputted temperature is smaller than the smallest physically possible temperature.");
+		  //System.out.println("Here's that temperature - the absolute zero.");
+		  value = 0;
+	  }
+	  
+	  switch (units) {
+		  case KELVIN:     convertedValue = value;
+		                   break;
+		  	case CELSIUS:    convertedValue = value - 273.15;
+		                   break;
+		  	case FAHRENHEIT: convertedValue = value * 9.0/5.0 - 459.67;
+		                   break;
+		  	default:         throw new IllegalArgumentException();
+	  }
+	  
       return convertedValue;
   }
 
@@ -140,14 +150,16 @@ public class Temperature {
    * as follows
    * <pre><code>
    *    Temperature temperature = new Temperature(0, Temperature.Units.CELSIUS);
-   *    System.out.println(temperature.toString()); // prints "0 °C"
+   *    System.out.println(temperature.toString()); // prints "0 °C"
    *    temperature.changeUnits(Temperature.Units.FAHRENHEIT);
-   *    System.out.println(temperature.toString()); // prints "32 °F"
+   *    System.out.println(temperature.toString()); // prints "32 °F"
    *    temperature.changeUnits(Temperature.Units.KELVIN);
-   *    System.out.println(temperature.toString()); // prints "273.15 K"
+   *    System.out.println(temperature.toString()); // prints "273.15 K"
    * </code></pre>
    */
   public String toString() {
     return getValue() + " " + unitsToString();
-  }
+  } 
 }
+
+
