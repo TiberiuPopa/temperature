@@ -30,8 +30,20 @@ public class TemperatureTest {
 	@Test
 	public void testGetValueCelsius() {
 		Temperature tester = new Temperature(10.0, Temperature.Units.CELSIUS);
-		assertEquals("*getValue() returns wrong value!*", 10.0, tester.getValue(), 0.000001);
+		assertEquals("*getValue() returns wrong value for Celsius!*", 10.0, tester.getValue(), 0.000001);
 		// Using tolerance=0.000001 because prof. mentioned 1e6 precision on discussion board
 	}
-
+	
+	@Test
+	public void testGetValueFahrenheit() {
+		Temperature tester = new Temperature(10.0, Temperature.Units.FAHRENHEIT);
+		assertEquals("*getValue() returns wrong value for Fahrenheit!*", 10.0, tester.getValue(), 0.000001);
+	}
+	
+	@Test
+	public void testGetValueKelvin() {
+		Temperature tester = new Temperature(10.0, Temperature.Units.KELVIN);
+		assertEquals("*getValue() returns wrong value for Kelvin!*", 10.0, tester.getValue(), 0.000001);
+	}
+	
 }
