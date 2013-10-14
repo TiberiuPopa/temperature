@@ -48,7 +48,7 @@ public class TemperatureTest {
 		assertEquals("*getValue() returns wrong value for Celsius!*", 10.0, tester.getValue(), 0.000001);
 		// Using tolerance=0.000001 because prof. mentioned 1e6 precision on discussion board
 	}
-	
+	 
 	@Test
 	public void testGetValueFahrenheit() {
 		Temperature tester = new Temperature(10.0, Temperature.Units.FAHRENHEIT);
