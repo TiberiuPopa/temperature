@@ -1,6 +1,6 @@
 /** 
- * @author Aditya Mahajan <aditya.mahajan@mcgill.ca>
- * @version 2013.10.06
+ * @author Tiberiu Popa (tiberiu.popa@mail.mcgill.ca)
+ * @version 2013.10.13
  * Unit Testing Temperature class
  */
 
@@ -9,6 +9,8 @@ import static org.junit.Assert.* ;
 
 public class TemperatureTest {
 
+	// Start of tests for getUnits()
+	
 	@Test
 	public void testGetUnitsCelsius() {
 		Temperature tester = new Temperature(10.0, Temperature.Units.CELSIUS);	// The 10.0 is irrelevant; we test units
@@ -26,6 +28,12 @@ public class TemperatureTest {
 		Temperature tester = new Temperature(10.0, Temperature.Units.KELVIN);
 		assertTrue("*getUnits() fails for Kelvin!*", Temperature.Units.KELVIN == tester.getUnits() );
 	}
+	
+	// End of tests for getUnits()
+	
+	
+	
+	// Start of tests for getValue()
 	
 	@Test
 	public void testGetValueCelsius() {
@@ -46,4 +54,5 @@ public class TemperatureTest {
 		assertEquals("*getValue() returns wrong value for Kelvin!*", 10.0, tester.getValue(), 0.000001);
 	}
 	
+	// End of tests for getValue()
 }
