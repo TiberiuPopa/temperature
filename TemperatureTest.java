@@ -1,5 +1,6 @@
 /** 
  * @author Tiberiu Popa (tiberiu.popa@mail.mcgill.ca)
+ * ID : 260414246
  * @version 2013.10.13
  * Unit Testing Temperature class
  */
@@ -9,7 +10,9 @@ import static org.junit.Assert.* ;
 
 public class TemperatureTest {
 
-	// Start of tests for getUnits()
+	
+	// ***Start of tests for getUnits()***
+	
 	
 	@Test
 	public void testGetUnitsCelsius() {
@@ -29,11 +32,13 @@ public class TemperatureTest {
 		assertTrue("*getUnits() fails for Kelvin!*", Temperature.Units.KELVIN == tester.getUnits() );
 	}
 	
-	// End of tests for getUnits()
+	
+	// ***End of tests for getUnits()***
 	
 	
 	
-	// Start of tests for getValue()
+	// ***Start of tests for getValue()***
+	
 	
 	@Test
 	public void testGetValueCelsius() {
@@ -54,5 +59,32 @@ public class TemperatureTest {
 		assertEquals("*getValue() returns wrong value for Kelvin!*", 10.0, tester.getValue(), 0.000001);
 	}
 	
-	// End of tests for getValue()
+	
+	
+	// Testing for temperatures below the absolute zero, for all 3 units.
+	// Temperature.java was changed! In this case, the absolute zero is returned!
+	@Test
+	public void testGetValueCelsiusSubZero() {
+		Temperature tester = new Temperature(-300.0, Temperature.Units.CELSIUS);
+		assertEquals("*getValue() returns wrong value for Celsius!*", -273.15, tester.getValue(), 0.000001);
+									// Absolute Zero in C is -273.15
+	}
+	
+	@Test
+	public void testGetValueFahrenheitSubZero() {
+		Temperature tester = new Temperature(-600.0, Temperature.Units.FAHRENHEIT);
+		assertEquals("*getValue() returns wrong value for Fahrenheit!*", -459.67, tester.getValue(), 0.000001);
+									// Absolute Zero in F is -459.67
+	}
+	
+	@Test
+	public void testGetValueKelvinSubZero() {
+		Temperature tester = new Temperature(-10.0, Temperature.Units.KELVIN);
+		assertEquals("*getValue() returns wrong value for Kelvin!*", 0.0, tester.getValue(), 0.000001);
+									// Absolute Zero in K is 0.0
+	}
+	
+	
+	// ***End of tests for getValue()***
+	
 }
